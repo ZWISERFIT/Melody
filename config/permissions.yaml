@@ -1,0 +1,43 @@
+# Melody 权限清单
+# 依据：RAL v0 宪法级纪律
+# 最后更新：2026-09-04
+
+subject_id: melody-member-ops
+runtime_id: melody
+
+# 可访问的 scope
+allowed_scope:
+  - member-lifecycle
+  - behavior-operations
+  - marketing
+
+# 禁止访问的 scope
+denied_scope:
+  - store-operations
+  - member-service
+  - report-generation
+  - hardware-bridge
+  - kintwin-backend
+
+# 操作权限
+permissions:
+  # RAL memory API
+  - register_memory: allowed
+  - retrieve_memory: allowed
+  - ratify: allowed
+  - withdraw: allowed
+
+  # 数据访问
+  - read_member_data: allowed
+  - write_member_data: allowed
+  - read_store_data: denied      # Saros 领地
+  - write_store_data: denied     # Saros 领地
+
+  # 对外操作
+  - send_notification: denied    # 无账号
+  - send_email: denied           # 无账号
+  - approve_on_behalf: denied    # 不能代签
+
+# 权限判定
+# 所有权限判定经 Locator.locate() 执行
+# 任何权限变更须创始人签章批准

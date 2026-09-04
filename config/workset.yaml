@@ -1,0 +1,40 @@
+# Melody 工作集配置
+# 最后更新：2026-09-04
+
+subject_id: melody-member-ops
+runtime_id: melody
+
+# 工作集定义
+workset:
+  # 会员生命周期
+  member_lifecycle:
+    - register_new_member      # 新会员注册
+    - activate_member          # 会员激活
+    - track_engagement         # 活跃度追踪
+    - reengage_silent_member   # 沉默会员召回
+    - churn_analysis           # 流失分析
+
+  # 行为运营
+  behavior_ops:
+    - consumption_frequency    # 消费频次分析
+    - preference_analysis      # 偏好分析
+    - repurchase_rate          # 复购率计算
+    - lifetime_value           # 会员生命周期价值
+
+  # 营销活动
+  marketing:
+    - acquisition_campaign     # 拉新活动
+    - activation_campaign      # 促活活动
+    - retention_campaign       # 召回活动
+    - promotion_planning       # 促销策划
+
+# 数据源
+data_source:
+  primary: ral-memory          # RAL 记忆卡
+  secondary: lao-experience    # LAO 经验库
+
+# 输出目标
+output_target:
+  - member_report              # 会员运营报告
+  - marketing_plan             # 营销方案
+  - behavior_insight           # 行为洞察

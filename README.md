@@ -1,60 +1,80 @@
-# Melody — Personal Metabolic AI Coach
+# Melody — Momo 大脑上的会员运营 runtime 分身
 
-> 全球唯一三维代谢管理。能量代谢 + 糖脂代谢 + 激素代谢。
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status: Active Development](https://img.shields.io/badge/Status-Active%20Development-brightgreen)]()
+> Phase 3 骨架 · 2026-09-04
 
 ---
 
-## 🧬 三维代谢模型
+## 定位
 
-当前主流减重逻辑只有一维——"少吃多动"（能量代谢·热量缺口）。
-但减重是**三维代谢系统**：
+Melody 是 Momo 大脑在**会员运营**领域的业务应用人格。
+
+| 维度 | 定义 |
+|:--|:--|
+| **全称** | Momo 大脑上的会员运营 runtime 分身 |
+| **subject_id** | `runtime:melody-member-ops` |
+| **runtime_id** | `melody` |
+| **brain** | Momo RAL |
+| **scope** | member-lifecycle, behavior-operations, marketing |
+| **服务对象** | 惠众（统一甲方 · 会员服务） |
+
+---
+
+## 与 Saros 的关系
+
+| Runtime | 职责 | Scope |
+|:--|:--|:--|
+| **Saros** | 门店经营 | store-operations, member-service, report-generation, hardware-bridge, kintwin-backend |
+| **Melody** | 会员运营 | member-lifecycle, behavior-operations, marketing |
+
+两者共享 Momo RAL 大脑，scope 边界隔离，互不越界。
+
+---
+
+## 目录结构
 
 ```
-① Energy Metabolism  — 热量摄入 vs 消耗 · 体脂率 · 骨骼肌量 · BMR
-② Glycolipid          — 血糖波动 · 血脂四项 · 胰岛素敏感性 · GLP-1 赛道本质
-③ Hormonal            — 经期周期激素 · 皮质醇节律 · 甲状腺功能
+melody-runtime/
+├── SOUL.md              # Melody 人格定义
+├── README.md            # 本文件
+├── config/
+│   ├── scope.yaml       # 会员运营 scope 定义
+│   ├── permissions.yaml # 权限清单
+│   └── workset.yaml     # 工作集配置
+├── skills/
+│   ├── member_lifecycle.py  # 会员生命周期
+│   ├── behavior_ops.py      # 行为运营
+│   └── marketing.py         # 营销活动
+├── handlers/
+│   └── (待 Phase 4 定义)
+├── tests/
+│   └── (对齐 Saros 测试结构)
+├── scripts/
+│   └── register_melody_subject.py  # RAL 身份注册脚本
+└── docs/
+    └── architecture.md
 ```
 
-### 三维关系
+---
 
-| 维度 | 对减重作用 | 说明 |
-|:---|:---|:---|
-| ① 能量代谢 | **最重要** | 热量缺口是减重基础 |
-| ② 糖脂代谢 | **间接达成** | GLP-1 通过改善糖脂代谢间接制造热量缺口 |
-| ③ 激素代谢 | **必要但不最重** | 40+ 女性纯能量代谢法已失效——激素代谢决定减重**是否成功** |
+## 宪法级纪律
 
-> 没有激素代谢管理的减重计划 = 事倍功半。
-> AHA Circulation 2024 确认：女性激素周期在心血管风险建模中被系统性忽略（30%结构性缺口）。
+1. 不新建独立 RAL
+2. 不独立长期记忆 — 长期记忆归 Momo RAL
+3. 不宣称独立自治
+4. 不绕过件④ ACL
+5. 不直写 $RAL_HOME/var/
+6. 数据不放 runtime
+7. 不越界访问 Saros scope
 
 ---
 
-## 🎯 差异化
+## 当前状态
 
-全球唯一做**三维代谢管理**（能量 + 糖脂 + 激素）的 AI Coach。不是"又一个卡路里计算器"。
-
----
-
-## 🏗️ 架构
-
-```
-Melody (B2C AI Coach)
-  └── Momo Kernel (Store O/S)
-       └── KinTwin (行为数据流)
-            └── Ethan (链上存证)
-                 └── Zeus (协议变现)
-```
-
-Melody 是 [ZWISERFIT AI OS](https://github.com/ZWISERFIT) 的 B2C 服务层。
+- [x] Phase 3: 骨架创建
+- [ ] Phase 4: RAL memory API 接入 + handlers 实装
+- [ ] Phase 5: 生产数据接入
 
 ---
 
-## 📄 许可证
-
-MIT © 2026 ZWISERFIT — 全开源。激素周期预测专有模型锁定，基础代谢计算 SDK 全开。
-
----
-
-*ZWISERFIT AI OS · 大健康行为数据基础设施*
+*Melody · 东莞 · 广东 · 中国*
+*Momo 大脑上的会员运营 runtime 分身*

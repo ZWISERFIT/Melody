@@ -1,0 +1,29 @@
+# Melody scope 定义
+# 依据：Phase 3 骨架 · 签章后不可擅改
+# 最后更新：2026-09-04
+
+subject_id: melody-member-ops
+runtime_id: melody
+brain: momo-ral
+
+# 会员运营 scope 边界
+scope:
+  - member-lifecycle      # 会员生命周期管理（注册、活跃、沉默、流失）
+  - behavior-operations   # 行为运营（消费频次、偏好分析、复购率）
+  - marketing             # 营销运营（拉新、促活、召回活动）
+
+# 明确排除的 scope（Saros 领地）
+excluded_scope:
+  - store-operations      # 门店运营 → Saros
+  - member-service        # 会员服务（签到、约课）→ Saros
+  - report-generation     # 报告生成（日报、周报）→ Saros
+  - hardware-bridge       # 硬件桥接（RV1109、HTTP BS）→ Saros
+  - kintwin-backend       # KinTwin 小程序后端 → Saros
+
+# 服务对象
+service_target:
+  company: huizhong        # 惠众（统一甲方 · 会员服务）
+
+# scope 变更纪律
+# scope 边界受 boundary/gate.py 约束，运行时不可越界访问。
+# 任何 scope 变更须创始人签章批准。
