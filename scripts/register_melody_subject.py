@@ -1,35 +1,34 @@
-"""
-Melody RAL 身份注册脚本
-Phase 3 · 2026-09-04
+#!/usr/bin/env python3
+"""Register melody-member-ops in RAL identity layer.
 
-注册 runtime:melody-member-ops 到 RAL 身份层
+依据：170号施工令 Phase 2 前置条件。
 """
 import sys
 sys.path.insert(0, '/home/agentuser/ral-core')
 
+from ral.locator import db
 from ral.identity.api import Identity
-from ral.db.connection import get_connection
+from ral.identity import store as identity_store
 
+conn = db.open_index()
+identity = Identity(conn, actor='melody-bootstrap', runtime='melody')
 
-def register_melody_subject():
-    """注册 Melody 身份到 RAL"""
-    conn = get_connection()
-    actor = 'founder-approval-phase3'
-    runtime = 'melody'
+# subject_id format: kind:name
+SUBJECT_ID = 'runtime:melody-member-ops'
 
-    identity = Identity(conn, actor, runtime)
-
-    # 注册 subject
-    result = identity.register_subject(
+# Check if already exists
+if identity_store.exists(conn, SUBJECT_ID):
+    print('ALREADY_EXISTS: ' + SUBJECT_ID + ' already registered')
+else:
+    subject_id = identity.register_subject(
         kind='runtime',
         name='melody-member-ops',
-        display_name='Melody - Momo大脑上的会员运营runtime分身',
-        authorized_by='founder-approval-phase3'
+        display_name='Melody - Momo member operations runtime avatar',
+        authorized_by='founder-approval-170'
     )
+    print('REGISTERED: subject_id=' + subject_id)
 
-    print(f"注册结果: {result}")
-    return result
-
-
-if __name__ == '__main__':
-    register_melody_subject()
+# Verify
+exists = identity_store.exists(conn, SUBJECT_ID)
+print('VERIFY: exists=' + str(exists))
+conn.close()
