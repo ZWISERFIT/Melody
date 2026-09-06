@@ -1,2 +1,10 @@
 __pycache__/
 *.pyc
+
+# secrets & credentials (appended 2026-09-05 per 175-ruling P1)
+*.env
+*.key
+*.pem
+*secrets*
+*credentials*
+!*.env.example
